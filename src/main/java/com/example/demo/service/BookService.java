@@ -21,9 +21,9 @@ public class BookService {
 	}
 
 	private static void init() {
-		list = List.of(new BookModel(1, "Vaibhav 1", "Kalyan 1"), new BookModel(2, "Vaibhav 2", "Kalyan 2"),
-				new BookModel(3, "Vaibhav 3", "Kalyan 3"));
-
+		list.add(new BookModel(1, "Vaibhav 1", "Kalyan 1"));
+		list.add(new BookModel(1, "Vaibhav 2", "Kalyan 2"));
+		list.add(new BookModel(1, "Vaibhav 3", "Kalyan 3"));
 	}
 
 	private static List<BookModel> list;
