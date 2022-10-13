@@ -16,8 +16,8 @@ public class BookService {
 	public static BookService getInstance() {
 		if (instance == null) {
 			instance = new BookService();
+			init();
 		}
-		init();
 		return instance;
 	}
 
@@ -25,10 +25,9 @@ public class BookService {
 
 	private static void init() {
 		list.add(new BookModel(1, "Vaibhav 1", "Kalyan 1"));
-		list.add(new BookModel(1, "Vaibhav 2", "Kalyan 2"));
-		list.add(new BookModel(1, "Vaibhav 3", "Kalyan 3"));
+		list.add(new BookModel(2, "Vaibhav 2", "Kalyan 2"));
+		list.add(new BookModel(3, "Vaibhav 3", "Kalyan 3"));
 	}
-
 
 	public List<BookModel> getBooksFromDatabase() {
 		return list;
@@ -40,5 +39,16 @@ public class BookService {
 
 	public BookModel getBookByIDAndName(int id, String name) {
 		return list.stream().filter(e -> e.getID() == id && e.getName().equals(name)).findFirst().get();
+	}
+
+	public void updateBook(int id, BookModel book) {
+		BookModel oldbook = list.stream().filter(e -> e.getID() == id).findFirst().get();
+		oldbook.setName(book.getName());
+		oldbook.setCity(book.getCity());
+	}
+
+	public void delete(int id) {
+		BookModel book = list.stream().filter(e -> e.getID() == id).findFirst().get();
+		list.remove(book);
 	}
 }
