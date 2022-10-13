@@ -51,4 +51,8 @@ public class BookService {
 		BookModel book = list.stream().filter(e -> e.getID() == id).findFirst().get();
 		list.remove(book);
 	}
+
+	public void addBook(BookModel book) {
+		list.add(book);
+	}
 }
